@@ -71,7 +71,7 @@ const StudentView = (props) => {
       <h2> This student is not enrolled in a campus currently</h2>
       }
       <h3>{student.email}</h3>
-      <img src={student.imageUrl} alt = ""/>
+      <img src={student.imageUrl} alt = "https://i.picsum.photos/id/690/200/200.jpg?hmac=DN6slU20ktSeMSXbM6U8BG_YHhebxEl3S70qNurkzk8"/>
       {student.gpa != null ?
       <h3> GPA: {student.gpa} </h3> 
       : 

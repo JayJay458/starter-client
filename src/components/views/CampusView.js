@@ -61,7 +61,7 @@ const CampusView = (props) => {
         </Toolbar>
       </AppBar>     
       <h1>{campus.name}</h1>
-      <img src={campus.imageUrl} alt= ""/>
+      <img src={campus.imageUrl} alt= "https://i.picsum.photos/id/690/200/200.jpg?hmac=DN6slU20ktSeMSXbM6U8BG_YHhebxEl3S70qNurkzk8"/>
       <p> {campus.address} </p>
       <p>{campus.description}</p> 
       {campus.students.length !== 0 ?
@@ -83,6 +83,7 @@ const CampusView = (props) => {
             <p> There are no students currently at this campus </p> 
       }
     </div>
+    
   );
 
 };
