@@ -2,23 +2,25 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import EditCampusView from '../views/EditCampusView';
+import { editCampusThunk, fetchCampusThunk } from '../../store/thunks';
 import NewCampusView from '../views/NewCampusView';
-import { addCampusThunk } from '../../store/thunks';
 
 
-class NewCampusContainer extends Component {
+class EditCampusContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
           name: "", 
-          address: "", 
-          description: "",
-          imageUrl:"", 
+          description: "", 
+          address: "",
           redirect: false, 
           redirectId: null
         };
     }
-
+    // componentDidMount(){
+    //     this.props.fetchCampus(this.props.match.params.id);
+    // }
     handleChange = event => {
       this.setState({
         [event.target.name]: event.target.value
@@ -30,18 +32,19 @@ class NewCampusContainer extends Component {
 
         let campus = {
             name: this.state.name,
-            address: this.state.address,
-            description: this.state.description,
+            description: this.state.description, 
+            address: this.state.address, 
+            id: this.props.match.params.id
         };
         
-        let newCampus = await this.props.addCampus(campus);
+        let editCampus = await this.props.editCampus(campus);
 
         this.setState({
-          name: "", 
-          address: "", 
-          description: "",
+        name: "", 
+        description: "", 
+        address: "",
           redirect: true, 
-          redirectId: newCampus.id
+          redirectId: campus.id
         });
     }
 
@@ -54,18 +57,24 @@ class NewCampusContainer extends Component {
           return (<Redirect to={`/campus/${this.state.redirectId}`}/>)
         }
         return (
-          <NewCampusView 
+          <EditCampusView 
             handleChange = {this.handleChange} 
-            handleSubmit={this.handleSubmit}      
+            handleSubmit={this.handleSubmit}    
+            campus={this.props.campus}  
           />
         );
     }
 }
-
+const mapState= (state) => {
+    return {
+        campus: state.campus,
+    };
+};
 const mapDispatch = (dispatch) => {
     return({
-        addCampus: (campus) => dispatch(addCampusThunk(campus)),
+        editCampus: (campus) => dispatch(editCampusThunk(campus)),
+        // fetchCampus: (id) => dispatch(fetchCampusThunk(id))
     })
 }
 
-export default connect(null, mapDispatch)(NewCampusContainer);
+export default connect(mapState, mapDispatch)(EditCampusContainer);
