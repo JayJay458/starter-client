@@ -27,7 +27,7 @@ class EditStudentContainer extends Component {
       });
     }
 
-    handleSubmit = async event => {
+    handleSubmit = async (event,studentpassed) => {
         event.preventDefault();
 
         let student = {
@@ -38,6 +38,28 @@ class EditStudentContainer extends Component {
             gpa: this.state.gpa, 
             id: this.props.match.params.id
         };
+        if(student.firstname==='')
+        {
+          student.firstname=studentpassed.firstname;
+        }
+        if(student.lastname==='')
+        {
+          student.lastname=studentpassed.lastname;
+        }        
+        if(student.campusId===null)
+        {
+        
+         
+          student.campusId=studentpassed.campusId;
+        }        
+        if(student.email==='')
+        {
+          student.email=studentpassed.email;
+        }        
+        if(student.gpa==='')
+        {
+          student.gpa=studentpassed.gpa;
+        }
         
         let editStudent = await this.props.editStudent(student);
 

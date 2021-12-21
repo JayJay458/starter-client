@@ -23,11 +23,13 @@ class EditCampusContainer extends Component {
     // }
     handleChange = event => {
       this.setState({
+        
         [event.target.name]: event.target.value
       });
+
     }
 
-    handleSubmit = async event => {
+    handleSubmit = async (event,campuspassed) => {
         event.preventDefault();
 
         let campus = {
@@ -36,7 +38,20 @@ class EditCampusContainer extends Component {
             address: this.state.address, 
             id: this.props.match.params.id
         };
-        
+        if(campus.name==='')
+        {
+          campus.name=campuspassed.name;
+        }
+        if(campus.description==='')
+        {
+          campus.description=campuspassed.description;
+        }
+        if(campus.address==='')
+        {
+
+          campus.address=campuspassed.address;
+        }
+
         let editCampus = await this.props.editCampus(campus);
 
         this.setState({

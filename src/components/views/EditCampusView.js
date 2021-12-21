@@ -43,7 +43,7 @@ const EditCampusView = (props) => {
             Edit Campus
           </Typography>
         </div>
-        <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
+        <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e, campus)}>
           <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Name: </label>
           <input required={true} type="text" name="name" defaultValue={campus.name} onChange ={(e) => handleChange(e)} />
           <br/>

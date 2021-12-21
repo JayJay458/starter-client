@@ -43,7 +43,7 @@ const EditStudentView = (props) => {
             Edit Student
           </Typography>
         </div>
-        <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
+        <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e,student)}>
           <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
           <input required={true} type="text" name="firstname" defaultValue={student.firstname} onChange ={(e) => handleChange(e)} />
           <br/>
