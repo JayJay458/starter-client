@@ -63,7 +63,7 @@ const AllCampusesView = (props) => {
         </Link>
       </Toolbar>
     </AppBar>     <p>There are no campuses.</p>
-    <Link to={`newcampuses`}>
+    <Link to={`newcampus`}>
         <button>Add New Campus</button>
       </Link>
       </div>
