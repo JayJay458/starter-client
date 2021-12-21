@@ -31,8 +31,8 @@ const useStyles = makeStyles( () => ({
   
 }));
 
-const NewCampusView = (props) => {
-  const {handleChange, handleSubmit } = props;
+const EditCampusView = (props) => {
+  const {handleChange, handleSubmit, campus } = props;
   const classes = useStyles();
 
   return (
@@ -40,23 +40,25 @@ const NewCampusView = (props) => {
       <div className={classes.formContainer}>
         <div className={classes.formTitle}>
           <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-            New Campus
+            Edit Campus
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
-          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Name: </label>
-          <input type="text" name="name" onChange ={(e) => handleChange(e)} />
+          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Name: </label>
+          <input required={true} type="text" name="name" defaultValue={campus.name} onChange ={(e) => handleChange(e)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}> Address: </label>
-          <input type="text" name="address" onChange={(e) => handleChange(e)} />
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
+          <input type="text" name="description" defaultValue={campus.description} onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
-          <label style={{color:'#11153e', fontWeight: 'bold'}}> Description: </label>
-          <input type="text" name="description" onChange={(e) => handleChange(e)} />
+
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Address: </label>
+          <input type="text" name="address" defaultValue={campus.address} onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
+
 
           <Button variant="contained" color="primary" type="submit">
             Submit
@@ -70,4 +72,4 @@ const NewCampusView = (props) => {
   )
 }
 
-export default NewCampusView;
+export default EditCampusView;
