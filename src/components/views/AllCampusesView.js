@@ -46,9 +46,11 @@ const AllCampusesView = (props) => {
     <div className={classes.root}>
     <AppBar position="static" elevation={0} className={classes.appBar}>
       <Toolbar>
-        <Typography variant="h6" className={classes.title} color="inherit" >
-          CRUD App
-        </Typography>
+      <Link className = {classes.title} to={'/'}>
+          <Typography variant="h6" className={classes.title} color="inherit" >
+            CRUD App
+          </Typography>
+          </Link>
 
         <Link className={classes.links} to={'/campuses'} >
           <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
@@ -74,9 +76,11 @@ const AllCampusesView = (props) => {
     <div className={classes.root}>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
+        <Link className = {classes.title} to={'/'}>
           <Typography variant="h6" className={classes.title} color="inherit" >
             CRUD App
           </Typography>
+          </Link>
 
           <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
